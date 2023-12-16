@@ -1,1 +1,76 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"); */
+/* Global Variables */
+/* :root {
+  --font-family: "Poppins", sans-serif;
+  --bg-color: rgb(229, 229, 255);
+  --dark-bg-color: rgb(0, 0, 128);
+  --white: white;
+  --black: black;
+} */
 
+/* Global Styles */
+/* * {
+  margin: 0;
+  font-family: var(--font-family);
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.all {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  height: auto;
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5em;
+}
+.part1 {
+  background-color: var(--dark-bg-color);
+  height: 45vh;
+  width: 90%;
+  border-radius: 10px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--white);
+}
+.part2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.subpart2 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10rem;
+}
+button {
+  color: var(--dark-bg-color);
+  background-color: var(--bg-color);
+  border: none;
+  border: 1px solid var(--bg-color);
+  text-transform: uppercase;
+  padding: 1rem 5rem;
+  font-size: 2rem;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#new:hover,
+#saved:hover {
+  background-color: var(--black);
+  color: var(--bg-color);
+} */
