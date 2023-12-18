@@ -1,6 +1,3 @@
-// Global Variables
-let savedListArray = [];
-
 // Fetching News
 const fetchNews = async () => {
   let result = await fetch(
@@ -36,12 +33,13 @@ const getCategories = async () => {
     });
   });
 };
-getCategories();
+if (document.getElementById("selection")) getCategories();
 
 // Displaying News
 async function displayNews(value) {
   const allData = await fetchNews();
   const container = document.getElementById("allNewsDetails");
+  const savedNews = getItemsFromLocalStorage();
   allData.map((item, index) => {
     if (value === "All" || value === item.category) {
       const contentContainer = document.createElement("div");
@@ -55,12 +53,79 @@ async function displayNews(value) {
           <p>${item.content} <span>read more....</span></p>
         </div>
         <div class="icon">
-          <i class="fa-regular fa-heart"></i>
+          <i class='fa-regular fa-heart fa-icon ${
+            savedNews.includes(index + "") ? "fa-solid" : ""
+          }' id=${index} onclick="saveToLocal()"></i>
         </div>
       `;
       container.appendChild(contentContainer);
     }
   });
 }
+if (document.getElementById("allNewsDetails")) displayNews("All");
 
-displayNews("All");
+// Local Storage Functions
+function getItemsFromLocalStorage() {
+  const savedNews = JSON.parse(localStorage.getItem("content"));
+  return savedNews === null ? [] : savedNews;
+}
+
+function addItemsToLocalStorage(content) {
+  const getSavedContent = getItemsFromLocalStorage();
+  localStorage.setItem(
+    "content",
+    JSON.stringify([...getSavedContent, content])
+  );
+}
+
+function removeItemsFromLocalStorage(content) {
+  const getSavedContent = getItemsFromLocalStorage();
+  localStorage.setItem(
+    "content",
+    JSON.stringify(getSavedContent.filter((value) => value != content))
+  );
+}
+
+// saveToLocal
+function saveToLocal() {
+  if (event.target.classList.contains("fa-solid")) {
+    removeItemsFromLocalStorage(event.target.id);
+    event.target.classList.remove("fa-solid");
+  } else {
+    addItemsToLocalStorage(event.target.id);
+    event.target.classList.add("fa-solid");
+  }
+}
+
+// Displaying Saved News
+async function displaySavedNews() {
+  const allData = await fetchNews();
+  const container = document.getElementById("savedNews");
+  const savedNews = getItemsFromLocalStorage();
+  savedNews.forEach((index) => {
+    console.log(allData[+index]);
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("content");
+    contentContainer.innerHTML = `
+    <div class="main-details">
+        <p>by <span>${allData[index].author}</span></p>
+        <p>category <span>${allData[index].category}</span></p>
+      </div>
+      <div class="main-content">
+        <p>${allData[index].content} <span>read more....</span></p>
+      </div>
+      <div class="icon">
+        <i class='fa-regular fa-heart fa-icon ${
+          savedNews.includes(index + "") ? "fa-solid" : ""
+        }' id=${index} onclick="saveToLocal()"></i>
+      </div>
+    `;
+    container.appendChild(contentContainer);
+  });
+}
+
+if (document.getElementById("savedNews")) {
+  document
+    .getElementById("savedNews")
+    .addEventListener("click", displaySavedNews());
+}

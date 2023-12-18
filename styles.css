@@ -114,6 +114,9 @@ html::-webkit-scrollbar-track {
   gap: 2.5rem;
   background-color: var(--part1-bg-color);
   border-radius: 1rem;
+  justify-content: center;
+  /* align-items: center; */
+  text-align: center;
 }
 
 /* part2 */
@@ -127,11 +130,11 @@ html::-webkit-scrollbar-track {
 
 /* main-heading */
 #main-heading {
-  /* background-color: var(--white); */
   background-color: var(--loaders-link-bg-color);
-  width: 50%;
-  margin-left: 16rem;
   border-radius: 1rem;
+  margin: auto;
+  padding: 0 1rem;
+  /* width: 50%; */
 }
 
 /* Loaders */
