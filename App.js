@@ -117,7 +117,7 @@ async function displaySavedNews() {
       <div class="icon">
         <i class='fa-regular fa-heart fa-icon ${
           savedNews.includes(index + "") ? "fa-solid" : ""
-        }' id=${index} onclick="saveToLocal()"></i>
+        }' id=${index}"></i>
       </div>
     `;
     container.appendChild(contentContainer);
